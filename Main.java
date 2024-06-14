@@ -8,8 +8,8 @@ public class Main {
       for(int i = 0; i < word.length(); i++){
          tree.insert((int)(word.charAt(i)));
       }
-
       tree.preOrder();
+      
   }
    
 }

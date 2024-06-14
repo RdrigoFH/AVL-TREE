@@ -5,7 +5,6 @@ public class AVLTree<T extends Comparable<T>> {
       this.root = null;
    }
 
-
    private int height(Node<T> node) {
       if(node == null)
          return 0;
@@ -21,13 +20,11 @@ public class AVLTree<T extends Comparable<T>> {
       x.right = y;   
       y.left = aux;
 
-      
       y.height = Math.max(height(y.left), height(y.right)) + 1;
       x.height = Math.max(height(x.left), height(x.right)) + 1;
 
       return x;
    }
-
 
    private Node<T> leftRotate(Node<T> x) {
       Node<T> y = x.right;
@@ -107,6 +104,67 @@ public class AVLTree<T extends Comparable<T>> {
          preOrderAux(node.right);
       }
    }
+   public Node<T> search(T data) {
+      return auxSearch(root, data);
+   }
 
+   private Node<T> auxSearch(Node<T> root, T data) {
+      if (root == null) {
+          System.out.println("Elemento no existente");
+          return null;
+      }
+      int rpta = root.val.compareTo(data);
+      if (rpta == 0) {
+          return root;
+      }
+      if (rpta > 0) {
+          return auxSearch(root.left, data);
+      } else {
+          return auxSearch(root.right, data);
+      }
+   }
 
+   private Node<T> min(Node<T> node) {
+      while (node.left != null) {
+          node = node.left;
+      }
+      return node;
+   }
+
+   private Node<T> max(Node<T> node) {
+      while (node.right != null) {
+          node = node.right;
+      }
+      return node;
+   }
+
+   public Node<T> parent(T data){
+      if(data.equals(root.val) || search(data)==null){
+         System.out.println("Nodo Padre inexistente");
+         return null;
+      }else{
+         return parentAux(root, data);
+      }
+   }
+   public Node<T> parentAux(Node<T> root, T data){
+      int rpta = root.val.compareTo(data);
+      if(rpta > 0){
+         if(root.left.val.equals(data)) return root;
+         return parentAux(root.left, data);
+      }else{
+         if(root.right.val.equals(data)) return root;
+         return parentAux(root.right, data);
+      }
+   }
+
+   public void son(T data){
+      auxSon(search(data));
+   }
+   public void auxSon(Node<T> root){
+      if(root != null){
+         auxSon(root.left);
+         System.out.println(root.val);
+         auxSon(root.right);
+      }
+   }
 }
