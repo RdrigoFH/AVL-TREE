@@ -124,14 +124,14 @@ public class AVLTree<T extends Comparable<T>> {
       }
    }
 
-   private Node<T> min(Node<T> node) {
+   public Node<T> min(Node<T> node) {
       while (node.left != null) {
           node = node.left;
       }
       return node;
    }
 
-   private Node<T> max(Node<T> node) {
+   public Node<T> max(Node<T> node) {
       while (node.right != null) {
           node = node.right;
       }
