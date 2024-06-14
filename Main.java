@@ -16,11 +16,16 @@ public class Main {
       tree.son(10);
       tree.preOrder();
       tree.search(49);
-      System.out.println("El minimo valor desde el nodo 49 es");
-      System.out.println(tree.min(aux));
-      System.out.println("El maximo valor desde el nodo 49 es");
-      System.out.println(tree.max(aux));
+      tree.insert(89);
+      tree.preOrder();
 
+      tree.insert(8);
+      tree.preOrder();
+
+      tree.insert(45);
+      tree.insert(360);
+      tree.insert(21);
+      tree.preOrder();
   }
    
 }
