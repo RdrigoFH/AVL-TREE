@@ -82,10 +82,16 @@ public class AVLTree<T extends Comparable<T>> {
       }
 
       // Left Right 
-
+      if (balance > 1 && val.compareTo(node.left.val) > 0) {
+         node.left = leftRotate(node.left);
+         return rightRotate(node);
+      }
 
       // Right Left 
-
+      if (balance < -1 && val.compareTo(node.right.val) < 0) {
+         node.right = rightRotate(node.right);
+         return leftRotate(node);
+     }
 
       return node;
    }
